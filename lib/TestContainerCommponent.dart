@@ -1,3 +1,11 @@
+/**
+ * test all commpoment :
+ * 从0开始写一个基于Flutter的开源中国客户端（4）——Flutter布局基础 - 掘金
+ *
+ * */
+
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 /**
  * test all commpoment :
@@ -145,7 +153,7 @@ class MyApp extends StatelessWidget {
         ),*/
 
           //sizebox test
-        /*  body: SizedBox(
+          /*  body: SizedBox(
             width: 400.0,
             height: 220.0,//这里控制下边child ,width，height ,
             child: Container(
@@ -154,8 +162,16 @@ class MyApp extends StatelessWidget {
               height: 700.0,
             ),
           ),*/
+          //test Transform用于在绘制子组件前对子组件进行某些变换操作，比如平移、旋转、缩放等。
 
-
+          //扭曲的矩形，菱形類似
+          body: Transform(
+              transform: Matrix4.skewY(0.3)..rotateZ(-math.pi / 12.0),
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            color: const Color(0xFFE8581C),
+            child: const Text('Apartment for rent'),
+          ),),
 
         ));
   }
