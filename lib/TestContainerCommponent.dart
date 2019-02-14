@@ -150,9 +150,11 @@ class MyApp extends StatelessWidget {
 
         //todo later to try
           //  child:SizedOverflowBox(size: 100,Alignment.center,child: Container(null,alignment: CrossAxisAlignment.center,),)
+
+
         ),*/
 
-          //sizebox test
+          //11. sizebox test
           /*  body: SizedBox(
             width: 400.0,
             height: 220.0,//这里控制下边child ,width，height ,
@@ -162,16 +164,18 @@ class MyApp extends StatelessWidget {
               height: 700.0,
             ),
           ),*/
-          //test Transform用于在绘制子组件前对子组件进行某些变换操作，比如平移、旋转、缩放等。
+          //12 test Transform用于在绘制子组件前对子组件进行某些变换操作，比如平移、旋转、缩放等。
 
           //扭曲的矩形，菱形類似
-          body: Transform(
+ /*         body: Transform(
               transform: Matrix4.skewY(0.3)..rotateZ(-math.pi / 12.0),
           child: Container(
             padding: const EdgeInsets.all(8.0),
             color: const Color(0xFFE8581C),
             child: const Text('Apartment for rent'),
-          ),),
+          ),),*/
+
+        //13：包含多個子widget的容器
 
         ));
   }
