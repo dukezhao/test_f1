@@ -167,7 +167,7 @@ class MyApp extends StatelessWidget {
           //12 test Transform用于在绘制子组件前对子组件进行某些变换操作，比如平移、旋转、缩放等。
 
           //扭曲的矩形，菱形類似
- /*         body: Transform(
+          /*         body: Transform(
               transform: Matrix4.skewY(0.3)..rotateZ(-math.pi / 12.0),
           child: Container(
             padding: const EdgeInsets.all(8.0),
@@ -175,9 +175,153 @@ class MyApp extends StatelessWidget {
             child: const Text('Apartment for rent'),
           ),),*/
 
-        //13：包含多個子widget的容器
+          //13：包含多個子widget的容器：Row,这里是一个text,一个方块，一个text:'world'
+
+  /*        body: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,//center表示:在主轴对齐方式，居中，spaceEvenly 和 spaceAround更居中一些，即text的文字在其控件自身内部再居中一些,
+            //mainAxisAlignment表示Row中的子组件在主轴(Row组件主轴表示水平方向，交叉轴表示垂直方向，Column组件主轴表示垂直方向，交叉轴表示水平方向)上的对齐方式，可以有如下几个取值
+            children: <Widget>[//是一个数组，
+              Text('test Row '),
+              Container(
+                width: 50.0,
+                height: 50.0,
+                color: Colors.lightGreen,
+              ),
+              Text('world')
+            ],
+          ),*/
+
+
+          //14：包含多個子widget的容器：Column：
+     /*     body:Column(
+
+            children: <Widget>[
+              Text('test column'),
+              Text('row1'),
+              Text('row2'),
+              Text('row3'),
+            ],
+          )*/
+
+     //15 ， stack组件,Stack组件类似于Android中的FrameLayout，
+          // 其中的子组件是一层层堆起来的，并不像Row或者Column中的子组件，按水平或垂直方向排列，下面用代码说明
+
+     /*     body: Stack(
+            children: <Widget>[
+              Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.greenAccent,
+              ),
+
+              Container(
+                width: 30.0,
+                height: 40.0,
+                color: Colors.redAccent,
+              ),
+            ],
+          ),*/
+
+     //16, IndexedStack组件。
+          // IndexedStack的构造方法中有个index属性，上面的index属性为1，则显示的是children数组中的第2个元素（
+          // 绿色方块），如果index改为0，则显示的是第1个元素（红色方块），如果index的大小超过了children数组的长
+          // 度，则会报错。
+
+
+         /* body: IndexedStack(
+            index: 0,
+            children: <Widget>[
+              Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.orangeAccent,
+                child: Center(
+                  child: Text("index:0",style: TextStyle(fontSize: 20.0),),
+                ),
+              ),
+              Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.pink,
+                child: Center(
+                  child: Text("index:1",style: TextStyle(fontSize: 20.0),),
+                ),
+              ),
+            ],
+          ),*/
+
+         //17 .TableTable组件用于显示多行多列的布局，
+          // 如果只有一行或者一列，使用Row或者Column更高效。下面用一段代码展示Table的用法：
+     /*     body: Table(
+            children: getData(),
+          ),*/
+
+
+        //wrap组件，可以在水平或垂直方向上多行显示其子组件，下面是示例代码：下列text会逐行显示，一行不够，就转下行
+
+          body: Wrap(
+            spacing: 5.0,// 水平方向上两个子组件的间距
+            runSpacing: 20.0,// 两行的垂直间距
+            children: <Widget>[
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+              Text('t1'),
+
+
+
+            ],
+          ),
 
         ));
+  }
+
+  List<TableRow> getData() {
+
+    var data=[
+      "hello",
+      "wrold"
+    ];
+
+    List<TableRow> result=new List<TableRow>();//图形集合
+    TextStyle style=new TextStyle(fontSize:15.0,fontWeight: FontWeight.bold);
+    for(int i=0;i<data.length;i++)
+      {
+        String str=data[i];
+        List<Widget> row=new List();//子row集合
+        for(int j=0;j<str.length;j++)
+          {
+            row.add(Text("${str[j]}",style: style,));
+          }
+          result.add(TableRow(//图形集合装填子row集合
+            children: row
+          ));
+      }
+      return result;
   }
 }
 
